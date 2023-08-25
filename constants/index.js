@@ -1,10 +1,11 @@
 /** @format */
 
 export const categories = ['Oranges', 'Bananas', 'Pineapple', 'Apple', 'Cherry']
+
 export const featuredFruits = [
   {
     name: 'Australian Orange',
-    price: '12.30',
+    price: '2.30',
     stars: 4,
     desc: 'Sweet and juicy',
     shadow: 'orange',
@@ -13,17 +14,17 @@ export const featuredFruits = [
   },
   {
     name: 'Flesh Nectari',
-    shadow: 'red',
-    price: '12',
+    price: '2.40',
     stars: 3,
     desc: 'Sweet and juicy',
+    shadow: 'red',
     image: require('../assets/images/peach.png'),
     color: (opacity) => `rgba(255, 170, 157, ${opacity})`
   },
 
   {
     name: 'Black Grapes',
-    price: '40',
+    price: '4.30',
     stars: 4,
     desc: 'Sweet and juicy',
     shadow: 'purple',
@@ -33,7 +34,7 @@ export const featuredFruits = [
 
   {
     name: 'Red Grapefruit',
-    price: '30',
+    price: '1.90',
     stars: 4,
     desc: 'Sweet and juicy',
     shadow: 'red',
@@ -42,7 +43,7 @@ export const featuredFruits = [
   },
   {
     name: 'Green Apple',
-    price: '10.5',
+    price: '1.50',
     stars: 4,
     desc: 'Sweet and juicy',
     shadow: 'green',
