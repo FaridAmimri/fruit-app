@@ -2,11 +2,19 @@
 
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 export default function HotSalesCard({ fruit }) {
+  const navigation = useNavigation()
+
   return (
     <View className='mr-6'>
-      <TouchableOpacity className='flex-row justify-center -mb-9 shadow-lg z-20'>
+      <TouchableOpacity
+        className='flex-row justify-center -mb-9 shadow-lg z-20'
+        onPress={() =>
+          navigation.navigate('Product', { ...fruit, color: fruit.color(1) })
+        }
+      >
         <Image
           source={fruit.image}
           style={{
