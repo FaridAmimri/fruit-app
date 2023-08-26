@@ -30,7 +30,7 @@ export default function HomeScreen() {
       </View>
 
       {/* Categories */}
-      <View className='mt-4'>
+      <View className='mt-2'>
         <Text
           style={{ color: themeColors.text }}
           className='text-2xl tracking-widest font-medium ml-5'
@@ -71,7 +71,7 @@ export default function HomeScreen() {
       </View>
 
       {/* Fruits Carousel */}
-      <View className='mt-8'>
+      <View className='mt-6'>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {featuredFruits.map((fruit, index) => (
             <FruitCard fruitItem={fruit} key={index} />
@@ -80,7 +80,7 @@ export default function HomeScreen() {
       </View>
 
       {/* Hot Sales */}
-      <View className='mt-8 pl-5 space-y-1'>
+      <View className='mt-6 pl-5 space-y-1'>
         <Text style={{ color: themeColors.text }} className='text-xl font-bold'>
           Hot Sales
         </Text>
