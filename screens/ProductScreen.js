@@ -96,6 +96,7 @@ export default function ProductScreen(props) {
               shadowOffset: { width: 0, height: 15 },
               shadowOpacity: 0.5
             }}
+            onPress={() => navigation.navigate('Cart')}
           >
             <Text className='text-xl text-center text-white font-bold'>
               Add To Cart

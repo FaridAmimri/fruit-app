@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { LogBox } from 'react-native'
 import HomeScreen from '../screens/HomeScreen'
 import ProductScreen from '../screens/ProductScreen'
+import CartScreen from '../screens/CartScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -26,6 +27,11 @@ export default function Navigation() {
           name='Product'
           options={{ headerShown: false }}
           component={ProductScreen}
+        />
+        <Stack.Screen
+          name='Cart'
+          options={{ headerShown: false }}
+          component={CartScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
