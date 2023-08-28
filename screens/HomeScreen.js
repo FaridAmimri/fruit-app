@@ -11,10 +11,12 @@ import {
 import { themeColors } from '../theme'
 import { categories, featuredFruits } from '../constants'
 import { useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 import FruitCard from '../components/FruitCard'
 import HotSalesCard from '../components/HotSalesCard'
 
 export default function HomeScreen() {
+  const navigation = useNavigation()
   const [activeCategory, setActiveCategory] = useState('Bananas')
 
   return (
@@ -24,7 +26,10 @@ export default function HomeScreen() {
       {/* Top Bar */}
       <View className='flex-row mx-5 justify-between items-center'>
         <Bars3CenterLeftIcon size={30} color='black' />
-        <TouchableOpacity className='p-2 rounded-xl bg-orange-100'>
+        <TouchableOpacity
+          className='p-2 rounded-xl bg-orange-100'
+          onPress={() => navigation.navigate('Cart')}
+        >
           <ShoppingCartIcon size={25} color='orange' />
         </TouchableOpacity>
       </View>

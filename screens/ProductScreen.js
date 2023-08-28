@@ -1,16 +1,41 @@
 /** @format */
 
 import { View, Text, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { ChevronLeftIcon } from 'react-native-heroicons/solid'
+import { MinusIcon, PlusIcon } from 'react-native-heroicons/solid'
 import { useNavigation } from '@react-navigation/native'
 import { themeColors } from '../theme'
 import StarRating from 'react-native-star-rating'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../redux/cartSlice'
 
 export default function ProductScreen(props) {
   let fruit = props.route.params
   const navigation = useNavigation()
+  const dispatch = useDispatch()
+
+  const [product, setProduct] = useState(fruit)
+  const [quantity, setQuantity] = useState(1)
+
+  const handleQuantity = (type) => {
+    if (type === 'dec') {
+      quantity > 1 && setQuantity(quantity - 1)
+    } else {
+      setQuantity(quantity + 1)
+    }
+  }
+
+  const handleCart = () => {
+    dispatch(
+      addToCart({
+        ...product,
+        quantity: quantity
+      })
+    )
+    navigation.navigate('Cart')
+  }
 
   return (
     <View className='flex-1' style={{ backgroundColor: fruit.color }}>
@@ -60,15 +85,32 @@ export default function ProductScreen(props) {
         </View>
 
         {/* Star Rating */}
-        <StarRating
-          disabled={true}
-          starSize={18}
-          containerStyle={{ width: 120 }}
-          maxStars={5}
-          rating={fruit.stars}
-          emptyStarColor='lightGray'
-          fullStar={require('../assets/images/fullStar.png')}
-        />
+        <View className='flex-row justify-between'>
+          <StarRating
+            disabled={true}
+            starSize={18}
+            containerStyle={{ width: 120 }}
+            maxStars={5}
+            rating={fruit.stars}
+            emptyStarColor='lightGray'
+            fullStar={require('../assets/images/fullStar.png')}
+          />
+          <View className='flex-row items-center space-x-2'>
+            <TouchableOpacity
+              className='bg-gray-300 p-1 rounded-lg'
+              onPress={() => handleQuantity('dec')}
+            >
+              <MinusIcon size={15} color='white' />
+            </TouchableOpacity>
+            <Text>{quantity}</Text>
+            <TouchableOpacity
+              className='bg-gray-300 p-1 rounded-lg'
+              onPress={() => handleQuantity('inc')}
+            >
+              <PlusIcon size={15} color='white' />
+            </TouchableOpacity>
+          </View>
+        </View>
 
         {/* Description */}
         <View>
@@ -96,7 +138,7 @@ export default function ProductScreen(props) {
               shadowOffset: { width: 0, height: 15 },
               shadowOpacity: 0.5
             }}
-            onPress={() => navigation.navigate('Cart')}
+            onPress={() => handleCart()}
           >
             <Text className='text-xl text-center text-white font-bold'>
               Add To Cart
