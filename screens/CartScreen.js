@@ -6,18 +6,12 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 import { ChevronLeftIcon } from 'react-native-heroicons/solid'
 import { themeColors } from '../theme'
-import { cartItems } from '../constants'
 import CartItem from '../components/CartItem'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 export default function CartScreen() {
   const navigation = useNavigation()
   const cart = useSelector((state) => state.cart)
-  const dispatch = useDispatch()
-
-  let cartTotalPrice = 0
-
-  console.log(cartTotalPrice)
 
   return (
     <SafeAreaView className='flex-1 bg-orange-50'>
@@ -54,7 +48,10 @@ export default function CartScreen() {
       {/* Cart Total */}
       <View className='flex-row justify-end py-6 pb-6 mx-5'>
         <Text className='text-lg'>
-          Total price: <Text className='font-bold text-yellow-500'></Text>
+          Total price:{' '}
+          <Text className='font-bold text-yellow-500'>
+            {cart.total.toFixed(2)} €
+          </Text>
         </Text>
       </View>
 
